@@ -14,7 +14,9 @@ import Socials from "@components/Socials.astro";
 import { contentfulClient } from "../lib/contentful";
 import type { Post } from "../lib/contentful";
 
-const entries = await contentfulClient.getEntries<Post>({
+const entries: {
+  items: Post[];
+} = await contentfulClient.getEntries({
   content_type: "post",
 });
 
