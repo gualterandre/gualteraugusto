@@ -8,7 +8,7 @@ export interface Post {
     description: string;
     content: Document;
     slug: string;
-    tags: Array<String>;
+    tags: string[];
     featured: Boolean;
   }
 }

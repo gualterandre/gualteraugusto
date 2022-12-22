@@ -23,10 +23,11 @@ export async function getStaticPaths() {
   // const posts: Posts = await Astro.glob(
   //   "../../contents/**/*.md"
   // );
-  const entries = await contentfulClient.getEntries<Post>({
+  const entries: {
+    items: Post[];
+  } = await contentfulClient.getEntries({
     content_type: "post",
   });
-
   const posts = entries.items;
 
   const tags = getUniqueTags(posts);
@@ -45,11 +46,9 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.props;
 
-// const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob(
-//   "../../contents/**/*.md"
-// );
-
-const entries = await contentfulClient.getEntries<Post>({
+const entries: {
+  items: Post[];
+} = await contentfulClient.getEntries({
   content_type: "post",
 });
 
@@ -66,7 +65,7 @@ const tagPosts = getPostsByTag(posts, tag);
   >
     <ul>
       {
-        tagPosts.map((post: any) => (
+        tagPosts.map((post) => (
           <Card href={`/posts/${slugify(post.fields)}`} post={post.fields} />
         ))
       }

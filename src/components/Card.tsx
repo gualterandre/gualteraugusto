@@ -1,10 +1,10 @@
 import Datetime from "./Datetime";
-// import type { Frontmatter } from "src/types";
+
 import type { Post } from "../lib/contentful";
 
 export interface Props {
   href?: string;
-  post: Post;
+  post: Post["fields"];
   secHeading?: boolean;
 }
 

@@ -10,11 +10,11 @@ import type { Post } from "../../lib/contentful";
 
 // const posts = await Astro.glob<Frontmatter>("../../contents/**/*.md");
 
-const entries = await contentfulClient.getEntries<Post>({
+const entries: {
+  items: Post[];
+} = await contentfulClient.getEntries({
   content_type: "post",
 });
-
-console.log(entries);
 
 const posts = entries.items;
 

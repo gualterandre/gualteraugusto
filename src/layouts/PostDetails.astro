@@ -15,7 +15,7 @@ export interface Props {
   post: Post;
 }
 
-const { title, description, date, tags } = Astro.props.post;
+const { title, description, date, tags } = Astro.props.post.fields;
 
 let options = {
   renderNode: {
@@ -24,7 +24,7 @@ let options = {
   },
 };
 
-const content = documentToHtmlString(Astro.props.post.content, options);
+const content = documentToHtmlString(Astro.props.post.fields.content, options);
 ---
 
 <Layout title={title} description={description}>
